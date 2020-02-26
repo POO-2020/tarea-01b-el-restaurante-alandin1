@@ -3,10 +3,14 @@ import Tiempo from "./tiempo.js"
 import Fecha from "./fecha.js"
 import Precio from "./precio.js"
 import Producto from "./producto.js"
+import ElementoPedido from "./elementoPedido.js"
+import Pedido from "./pedido.js"
+import Cliente from "./cliente.js"
 
 class Main {
     constructor(){
-
+        this.pedido = new Pedido(new Fecha(27,2,2020), new Tiempo(6,34,"pm"), new Cliente("Ana Georgina Landín", new Direccion("Manuel Acuña", 385, 0, "Lomas", 28000, "Colima", "Colima"), 3123045861))
+        
     }
 
     pruebaTiempo(){
@@ -27,7 +31,7 @@ class Main {
 
     pruebaDireccion () {
         let dir1 = new Direccion("Manuel Acuña", 352, 0, "Lomas", 28000, "Colima", "Colima")
-        let dir2 = new Direccion("Ignacio Sandoval", 665, 6, "Lomas", 28000, "Colima", "Colima")
+        let dir2 = new Direccion("Ignacio Sandoval", 665, 9, "Lomas", 28000, "Colima", "Colima")
         console.log(dir1.getFormatoCorto())
         console.log(dir1.getFormatoExtend())
         console.log(dir2.getFormatoCorto())
@@ -43,6 +47,22 @@ class Main {
         let product = new Producto("Hamburguesa con papas,", new Precio(85.60))
         console.log(product.getDescripcion())
     }
+
+    pruebaElementoPedido() {
+        let pedido1 = new ElementoPedido(new Producto("Hamburguesa con papas", new Precio (85.6)), 2)
+        console.log(pedido1.getDescripcion())
+    }
+
+    pruebaPedido(){
+        let elemento = new ElementoPedido(new Producto("Hamburguesa con papas", new Precio (85.6)), 2)
+        this.pedido.agregarElemento(elemento)
+        console.log(this.pedido.listarElementos())
+    }
+
+    pruebaCliente(){
+        let cliente = new Cliente("Ana Landín", new Direccion("Ignacio Salndoval", 130, 0, "Centro", 28000, "Colima", "Colima"), 31358605)
+        console.log(cliente.getPerfil())
+    }
 }
 
 let app = new Main
@@ -52,3 +72,5 @@ app.pruebaTiempo()
 app.pruebaDireccion()
 app.pruebaPrecio()
 app.pruebaProducto()
+app.pruebaElementoPedido()
+app.pruebaPedido()
