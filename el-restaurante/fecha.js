@@ -12,20 +12,20 @@ export default class Fecha {
     }
 
     getAños(){
-        let result = this.fecha.getFullYear() - new Date(Date.now()).getFullYear(); 
-        return result;
+        let result = this.fecha.getFullYear() - new Date(Date.now()).getFullYear() 
+        return result
     }
 
     getMeses(){
-        return this.getAños() * 12;
+        return this.getAños() * 12
     }
 
     getSemanas(){
-        return this.getMeses() * 4;
+        return this.getMeses() * 4
     }
 
     getDias(){
-        return this.getSemanas() * 7;
+        return this.getSemanas() * 7
     }
 
     getFecha(){
