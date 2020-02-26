@@ -6,6 +6,6 @@ export default class elementoPedido {
     }
     getDescripcion(){
         let precioF = this.cantidad * this.producto.precio.valor
-        return `${this.cantidad} * ${this.producto.nombre} $${new Intl.NumberFormat("en-US").format(precioF)}`
+        return `${this.cantidad} x ${this.producto.nombre} $${new Intl.NumberFormat("en-US").format(precioF)}`
     }
 }

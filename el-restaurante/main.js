@@ -6,11 +6,12 @@ import Producto from "./producto.js"
 import ElementoPedido from "./elementoPedido.js"
 import Pedido from "./pedido.js"
 import Cliente from "./cliente.js"
+import Restaurante from "./restaurante.js"
 
 class Main {
     constructor(){
         this.pedido = new Pedido(new Fecha(27,2,2020), new Tiempo(6,34,"pm"), new Cliente("Ana Georgina Landín", new Direccion("Manuel Acuña", 385, 0, "Lomas", 28000, "Colima", "Colima"), 3123045861))
-        
+        this.restaurante = new Restaurante("Kukara Sushi", 3126023, new Direccion("Ignacio Sandoval", 1130, 0, "Lomas", 28000, "Colima", "Colima"))
     }
 
     pruebaTiempo(){
@@ -30,12 +31,12 @@ class Main {
     }
 
     pruebaDireccion () {
-        let dir1 = new Direccion("Manuel Acuña", 352, 0, "Lomas", 28000, "Colima", "Colima")
-        let dir2 = new Direccion("Ignacio Sandoval", 665, 9, "Lomas", 28000, "Colima", "Colima")
-        console.log(dir1.getFormatoCorto())
-        console.log(dir1.getFormatoExtend())
-        console.log(dir2.getFormatoCorto())
-        console.log(dir2.getFormatoExtend())
+        let direcc1 = new Direccion("Manuel Acuña", 352, 0, "Lomas", 28000, "Colima", "Colima")
+        let direcc2 = new Direccion("Ignacio Sandoval", 665, 9, "Lomas", 28000, "Colima", "Colima")
+        console.log(direcc1.getFormatoCorto())
+        console.log(direcc1.getFormatoExtend())
+        console.log(direcc2.getFormatoCorto())
+        console.log(direcc2.getFormatoExtend())
     }
 
     pruebaPrecio() {
@@ -54,14 +55,31 @@ class Main {
     }
 
     pruebaPedido(){
-        let elemento = new ElementoPedido(new Producto("Hamburguesa con papas", new Precio (85.6)), 2)
-        this.pedido.agregarElemento(elemento)
+        let elemento1 = new ElementoPedido(new Producto("Hamburguesa con papas", new Precio (85.6)), 2)
+        this.pedido.agregarElemento(elemento1)
+        let elemento2 = new ElementoPedido(new Producto("Hamburguesa con queso y papas", new Precio (95.8)), 2)
+        this.pedido.agregarElemento(elemento2)
         console.log(this.pedido.listarElementos())
     }
 
     pruebaCliente(){
         let cliente = new Cliente("Ana Landín", new Direccion("Ignacio Salndoval", 130, 0, "Centro", 28000, "Colima", "Colima"), 31358605)
         console.log(cliente.getPerfil())
+    }
+
+    pruebaRestaurante(){
+        let prod1 = new Producto("Huevos revueltos", new Precio(45.90))
+        let prod2 = new Producto("Chilaquiles verdes", new Precio(90.5))
+        this.restaurante.registrarProducto(prod1)
+        this.restaurante.registrarProducto(prod2)
+        this.restaurante.listarProductos()
+        let pedido = new Pedido(new Fecha(27,2,2020), new Tiempo(11,48,"am"), new Cliente("Cristina López", new Direccion("Ignacio Zaragoza", 39, 0, "Centro", 28000, "Colima", "Colima"), 3123013359))
+        let elem1 = new ElementoPedido(new Producto("Sushi Loko", new Precio(110)), 8)
+        let elem2 = new ElementoPedido(new Producto("Langosta", new Precio(550.9)), 3)
+        pedido.agregarElemento(elem1)
+        pedido.agregarElemento(elem2)
+        this.restaurante.registrarPedido(pedido)
+        this.restaurante.listarPedidos()
     }
 }
 
@@ -74,3 +92,5 @@ app.pruebaPrecio()
 app.pruebaProducto()
 app.pruebaElementoPedido()
 app.pruebaPedido()
+app.pruebaCliente()
+app.pruebaRestaurante()
