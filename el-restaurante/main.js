@@ -2,6 +2,7 @@ import Direccion from "./direccion.js"
 import Tiempo from "./tiempo.js"
 import Fecha from "./fecha.js"
 import Precio from "./precio.js"
+import Producto from "./producto.js"
 
 class Main {
     constructor(){
@@ -37,6 +38,11 @@ class Main {
         let precio = new Precio(1334.50)
         console.log(precio.getPrecio())
     }
+
+    pruebaProducto() {
+        let product = new Producto("Hamburguesa con papas,", new Precio(85.60))
+        console.log(product.getDescripcion())
+    }
 }
 
 let app = new Main
@@ -45,3 +51,4 @@ app.pruebaFecha()
 app.pruebaTiempo()
 app.pruebaDireccion()
 app.pruebaPrecio()
+app.pruebaProducto()
