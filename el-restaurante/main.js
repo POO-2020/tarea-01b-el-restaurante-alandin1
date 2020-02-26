@@ -1,6 +1,7 @@
 import Direccion from "./direccion.js"
 import Tiempo from "./tiempo.js"
 import Fecha from "./fecha.js"
+import Precio from "./precio.js"
 
 class Main {
     constructor(){
@@ -31,6 +32,11 @@ class Main {
         console.log(dir2.getFormatoCorto())
         console.log(dir2.getFormatoExtend())
     }
+
+    pruebaPrecio() {
+        let precio = new Precio(1334.50)
+        console.log(precio.getPrecio())
+    }
 }
 
 let app = new Main
@@ -38,3 +44,4 @@ let app = new Main
 app.pruebaFecha()
 app.pruebaTiempo()
 app.pruebaDireccion()
+app.pruebaPrecio()
